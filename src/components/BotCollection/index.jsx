@@ -1,5 +1,14 @@
+import {
+  Button,
+  Grid,
+  Text,
+  Card,
+  Image,
+  Stack,
+  CardBody,
+  CardFooter,
+} from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import _, { filter } from "lodash";
 
 const BotCollection = () => {
   const [botDataCollection, setBotDataCollection] = useState();
@@ -19,7 +28,6 @@ const BotCollection = () => {
     fetchData();
   }, []);
 
-
   function handleClickBot(clickedBotId) {
     const clickedBot = botDataCollection.find((bot) => bot.id === clickedBotId);
     console.log(clickedBot);
@@ -27,28 +35,47 @@ const BotCollection = () => {
 
   //console.log(botDataCollection);
   return (
-    <div>
+    <Grid
+     
+      templateColumns="repeat(3, 1fr)"
+    
+    >
       {botDataCollection?.map((bot) => {
         return (
-          <div key={bot.id}>
-            <img src={bot.avatar_url} alt="avatar profile" />
-            <p>{bot.bot_class}</p>
-            <p>{bot.name}</p>
-            <button onClick={() => handleClickBot(bot.id)}>Enlist</button>
-          </div>
+          <Card
+            direction={{ base: "column", sm: "row" }}
+            overflow="hidden"
+            variant="outline"
+          >
+            <Image
+              objectFit="cover"
+              maxW={{ base: "100%", sm: "200px" }}
+              src={bot.avatar_url}
+              alt="bot profile"
+            />
+
+            <Stack>
+              <CardBody>
+                {/* <Heading size="md">The perfect latte</Heading> */}
+                <Text py="2">{bot.bot_class}</Text>
+                <Text py="2">{bot.name}</Text>
+              </CardBody>
+
+              <CardFooter>
+                <Button
+                  variant="solid"
+                  colorScheme="blue"
+                  onClick={() => handleClickBot(bot.id)}
+                >
+                  Add
+                </Button>
+              </CardFooter>
+            </Stack>
+          </Card>
         );
       })}
-    </div>
+    </Grid>
   );
 };
 
 export default BotCollection;
-
-//  botDataCollection.map((bot) => {
-//           return (
-//             <div key={bot.id}>
-//               <img src={bot.avatar_url} alt="avatar profile" />
-//               <p>{bot.bot_class}</p>
-//               <p>{bot.name}</p>
-//               <button onClick={() => handleClickBot(bot.id)}>Enlist</button>
-//             </div>
