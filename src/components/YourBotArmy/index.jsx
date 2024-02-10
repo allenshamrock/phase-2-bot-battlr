@@ -1,12 +1,13 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import SelectedBot from '../SelectedBot'
+import { GiRobotGolem } from "react-icons/gi";
 
 const YourBotArmy = ({ botDataCollection, botSelected, setBotSelected }) => {
   //Delete bot function
   function handleDelete(botClicked) {
     setBotSelected(botSelected.filter((bot) => bot !== botClicked));
-    console.log( 'yourBotArmy',botClicked);
+    console.log("yourBotArmy", botClicked);
   }
 
   //To filter the clicked bot
@@ -16,11 +17,12 @@ const YourBotArmy = ({ botDataCollection, botSelected, setBotSelected }) => {
         return bot;
       }
     }
-  })
+  });
 
-  console.log(selectedArmy)
-  console.log(botSelected)
+  console.log(selectedArmy);
+  console.log(botSelected);
 
+  //iterates through the filtered an added bot items and appends the details to a bot card
   const armyBots = selectedArmy.map((content, index) => (
     <SelectedBot
       image={content.avatar_url}
@@ -35,12 +37,16 @@ const YourBotArmy = ({ botDataCollection, botSelected, setBotSelected }) => {
       handleDelete={handleDelete}
     />
   ));
-  return <Box>
-    <Flex>
-      <Text>Bot Army</Text>
-      {armyBots}
-    </Flex>
-  </Box>;
+  return (
+    <Box>
+      <Flex>
+        <Text>
+          Bot <GiRobotGolem /> Army
+        </Text>
+        {armyBots}
+      </Flex>
+    </Box>
+  );
 };
 
 export default YourBotArmy;

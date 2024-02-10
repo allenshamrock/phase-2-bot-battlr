@@ -1,4 +1,7 @@
 import React from "react";
+import { FaHeartbeat } from "react-icons/fa";
+import { BsFillLightningFill, BsShieldShaded } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
 import {
   Button,
   ButtonGroup,
@@ -22,7 +25,8 @@ const BotItem = ({
   bot_class,
   catchphrase,
   id,
-    handleClicked,
+  handleClicked,
+  handleDelete,
 }) => {
   return (
     <Grid templateColumns="repeat(3, 1fr)">
@@ -41,18 +45,33 @@ const BotItem = ({
             <Heading size="md">{name}</Heading>
             <Text>{bot_class}</Text>
             <Text color="blue.600" fontSize="2xl">
-              ${catchphrase}
+              {catchphrase}
+            </Text>
+            <Text>
+              <span>
+                <FaHeartbeat /> {health}
+              </span>
+              <span>
+                <BsFillLightningFill /> {damage}
+              </span>
+              <span>
+                <BsShieldShaded /> {armor}
+              </span>
             </Text>
           </Stack>
         </CardBody>
         <Divider />
         <CardFooter>
-          <ButtonGroup spacing="2">
-            <Button variant="solid" colorScheme="blue" onClick={()=>handleClicked(id)}>
+          <ButtonGroup spacing="4">
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => handleClicked(id)}
+            >
               Add Bot
             </Button>
-            <Button variant="ghost" colorScheme="blue">
-              Delete
+            <Button variant="ghost" colorScheme="blue" onClick={()=>handleDelete(id)}>
+              <AiOutlineDelete />
             </Button>
           </ButtonGroup>
         </CardFooter>

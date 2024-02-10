@@ -34,11 +34,18 @@ const BotCollection = () => {
     fetchData();
   }, []);
 
+  function handleDelete(id) {
+    fetch(`http://localhost:3000/bots${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setBotDataCollection(botDataCollection.filter((bot) => bot.id !== id));
+    });
+  }
+
   //Function to get bot when the bot item is clicked
   function handleClicked(clickedBot) {
     setBotSelected([...botSelected, clickedBot]);
   }
-
 
   const BotCategory = botDataCollection.map((bot, index) => (
     <BotItem
@@ -52,6 +59,7 @@ const BotCollection = () => {
       id={bot.id}
       handleClicked={handleClicked}
       key={index}
+      handleDelete={handleDelete}
     />
   ));
 
@@ -62,11 +70,10 @@ const BotCollection = () => {
         botDataCollection={botDataCollection}
         setBotSelected={setBotSelected}
       />
-     
-        <Flex wrap="wrap" gap="6">
-          {BotCategory}
-        </Flex>
-      
+
+      <Flex wrap="wrap" gap="6">
+        {BotCategory}
+      </Flex>
     </Box>
   );
 };

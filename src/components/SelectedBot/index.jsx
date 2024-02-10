@@ -13,6 +13,10 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { FaHeartbeat } from "react-icons/fa";
+import { BsFillLightningFill, BsShieldShaded } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
+
 const SelectedBot = ({
   image,
   name,
@@ -22,7 +26,7 @@ const SelectedBot = ({
   bot_class,
   catchphrase,
   id,
-    handleDelete,
+  handleDelete,
 }) => {
   return (
     <Grid templateColumns="repeat(3, 1fr)">
@@ -43,6 +47,17 @@ const SelectedBot = ({
             <Text color="blue.600" fontSize="2xl">
               ${catchphrase}
             </Text>
+            <Text>
+              <span>
+                <FaHeartbeat /> {health}
+              </span>
+              <span>
+                <BsFillLightningFill /> {damage}
+              </span>
+              <span>
+                <BsShieldShaded /> {armor}
+              </span>
+            </Text>
           </Stack>
         </CardBody>
         <Divider />
@@ -51,8 +66,12 @@ const SelectedBot = ({
             <Button variant="solid" colorScheme="blue">
               Add Bot
             </Button>
-            <Button variant="ghost" colorScheme="blue" onClick={()=>handleDelete(id)}>
-              Delete
+            <Button
+              variant="ghost"
+              colorScheme="blue"
+              onClick={() => handleDelete(id)}
+            >
+              <AiOutlineDelete /> 
             </Button>
           </ButtonGroup>
         </CardFooter>
