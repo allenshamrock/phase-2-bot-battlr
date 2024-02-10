@@ -35,9 +35,9 @@ const BotCollection = () => {
   }, []);
 
   //Function to get bot when the bot item is clicked
-  // function handleClicked(clickedBot) {
-  //   setBotSelected([...botSelected, clickedBot]);
-  // }
+  function handleClicked(clickedBot) {
+    setBotSelected([...botSelected, clickedBot]);
+  }
 
 
   const BotCategory = botDataCollection.map((bot, index) => (
@@ -50,7 +50,7 @@ const BotCollection = () => {
       bot_class={bot.bot_class}
       catchphrase={bot.catchphrase}
       id={bot.id}
-      // handleClicked={handleClicked}
+      handleClicked={handleClicked}
       key={index}
     />
   ));

@@ -22,7 +22,7 @@ const BotItem = ({
   bot_class,
   catchphrase,
   id,
-  //   handleClicked,
+    handleClicked,
 }) => {
   return (
     <Grid templateColumns="repeat(3, 1fr)">
@@ -48,7 +48,7 @@ const BotItem = ({
         <Divider />
         <CardFooter>
           <ButtonGroup spacing="2">
-            <Button variant="solid" colorScheme="blue">
+            <Button variant="solid" colorScheme="blue" onClick={()=>handleClicked(id)}>
               Add Bot
             </Button>
             <Button variant="ghost" colorScheme="blue">

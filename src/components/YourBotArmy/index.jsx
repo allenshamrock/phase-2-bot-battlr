@@ -1,16 +1,17 @@
-import { Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import SelectedBot from '../SelectedBot'
 
 const YourBotArmy = ({ botDataCollection, botSelected, setBotSelected }) => {
   //Delete bot function
   function handleDelete(botClicked) {
-    setBotSelected(botSelected.filer((bot) => bot !== botClicked));
-    console.log(botClicked);
+    setBotSelected(botSelected.filter((bot) => bot !== botClicked));
+    console.log( 'yourBotArmy',botClicked);
   }
 
   //To filter the clicked bot
   let selectedArmy = botDataCollection.filter((bot) => {
-    for (i = 0; i < botSelected.length; i++) {
+    for (let i = 0; i < botSelected.length; i++) {
       if (bot.id === botSelected[i]) {
         return bot;
       }
