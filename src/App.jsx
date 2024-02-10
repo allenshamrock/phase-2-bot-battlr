@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BotCollection from "./components/BotCollection";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FadeLoader from "react-spinners/FadeLoader";
 import { Box, Flex } from "@chakra-ui/react";
-import YourArmy from "./components/YourAmry";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -16,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Box>
       {loading ? (
         <Flex
           direction={"column"}
@@ -27,19 +25,9 @@ function App() {
           <FadeLoader size={50} loading={loading} />
         </Flex>
       ) : (
-        <Routes>
-          <Route path="/" element={<BotCollection />} />
-          <Route
-            path="/bots/:id"
-            element={
-              <Box h={'100vh'}>
-                <YourArmy/>
-              </Box>
-            }
-          />
-        </Routes>
+        <BotCollection />
       )}
-    </Router>
+    </Box>
   );
 }
 
