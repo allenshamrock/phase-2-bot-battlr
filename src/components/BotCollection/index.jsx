@@ -1,16 +1,4 @@
-import {
-  Button,
-  Grid,
-  Text,
-  Card,
-  Image,
-  Stack,
-  CardBody,
-  CardFooter,
-  Divider,
-  Flex,
-  Box,
-} from "@chakra-ui/react";
+import { SimpleGrid, Box } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import YourBotArmy from "../YourBotArmy";
 import BotItem from "../BotItem";
@@ -55,13 +43,14 @@ const BotCollection = () => {
       damage={bot.damage}
       armor={bot.armor}
       bot_class={bot.bot_class}
-      catchphrase={bot.catchphrase}
+      created={bot.created_at}
       id={bot.id}
       handleClicked={handleClicked}
       key={index}
       handleDelete={handleDelete}
     />
   ));
+  console.log(BotCategory)
 
   return (
     <Box>
@@ -70,47 +59,19 @@ const BotCollection = () => {
         botDataCollection={botDataCollection}
         setBotSelected={setBotSelected}
       />
-
-      <Flex wrap="wrap" gap="6">
-        {BotCategory}
-      </Flex>
+   <SimpleGrid
+      as="div"
+      spacing={'20px'}
+      minChildWidth="400px"
+      p={"20px"}
+      height="minmax(100vh, auto)"
+    >
+       {BotCategory}
+    </SimpleGrid>
+     
+       
+    
     </Box>
   );
 };
 export default BotCollection;
-
-//  <Card key={bot.id} maxW="sm">
-//           <CardBody>
-//             <Flex w="100%" h="350px">
-//               <Image
-//                 objectFit="cover"
-//                 w={"100vw"}
-//                 src={bot.avatar_url}
-//                 alt="Bot profile"
-//                 borderRadius="lg"
-//               />
-//             </Flex>
-
-//             <Stack mt="6" spacing="2">
-//               {/* <Heading size="md">Living room Sofa</Heading> */}
-//               <Flex
-//                 direction={"column"}
-//                 alignItems={"center"}
-//                 justifyContent={"center"}
-//               >
-//                 <Text>{bot.bot_class}</Text>
-//                 <Text>{bot.name}</Text>
-//                 <Text color="blue.600" fontSize="2xl">
-//                   $450
-//                 </Text>
-//               </Flex>
-//             </Stack>
-//           </CardBody>
-//           <Divider />
-//           <CardFooter>
-//             <Button variant="solid" colorScheme="blue" onClick={handleClicked}>
-//               Add Bot
-//             </Button>
-//           </CardFooter>
-//         </Card>
-//       );
