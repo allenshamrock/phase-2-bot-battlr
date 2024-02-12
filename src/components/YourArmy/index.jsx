@@ -15,18 +15,25 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-const YourArmy = ({ botArmy, onDeleteBot, onDischarge,setBotArmy }) => {
+const YourArmy = ({ botArmy, onDeleteBot, onDischarge, setBotArmy }) => {
   //Function to discharge bot completely
   function handleDischarge(id) {
     fetch(`http://localhost:3000/bots/${id}`, {
       method: "DELETE",
     })
-    .then((response)=>response.json())
-    .then(() => onDischarge(id));
+      .then((response) => response.json())
+      .then(() => onDischarge(id));
   }
   return (
     <Box>
-      <Text>Bot army </Text>
+      <Text
+        t={"2"}
+        fontFamily={"2rem"}
+        fontSize={"1.5rem"}
+        textAlign={"center"}
+      >
+        Bot army{" "}
+      </Text>
       <SimpleGrid
         as="div"
         spacing={"20px"}
@@ -42,9 +49,9 @@ const YourArmy = ({ botArmy, onDeleteBot, onDischarge,setBotArmy }) => {
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
-              bg={"gray"}
-              border="3px solid blue"
+              bg={"#111"}
               borderRadius={"12px"}
+              color={"white"}
             >
               <CardBody cursor={"pointer"}>
                 <Flex w="100%">
@@ -57,18 +64,15 @@ const YourArmy = ({ botArmy, onDeleteBot, onDischarge,setBotArmy }) => {
                 <Stack justifyContent={"center"} alignItems={"center"}>
                   <Heading size="md">{bot.name}</Heading>
                   <Text>{bot.bot_class}</Text>
-                  <Text color="blue.600" fontSize="2xl">
-                    {bot.created_at}
-                  </Text>
                   <Flex gap={"3"}>
-                    <span>
-                      <FaHeartbeat fontSize={"1.2rem"} /> {bot.health}
+                    <span fontSize={"2rem"}>
+                      <FaHeartbeat fontSize={"1.5rem"} /> {bot.health}
                     </span>
                     <span>
-                      <BsFillLightningFill /> {bot.damage}
+                      <BsFillLightningFill fontSize={"1.5rem"} /> {bot.damage}
                     </span>
                     <span>
-                      <BsShieldShaded /> {bot.armor}
+                      <BsShieldShaded fontSize={"1.5rem"} /> {bot.armor}
                     </span>
                   </Flex>
                   <ButtonGroup spacing="4">

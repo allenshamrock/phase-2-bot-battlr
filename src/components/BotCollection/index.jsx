@@ -33,7 +33,7 @@ const BotCollection = ({ bots, loadingState, onAddBot }) => {
         </Flex>
       ) : (
         <>
-          <Text>BotCollection </Text>
+          <Text mt={'2'} fontFamily={'2rem'} fontSize={'1.5rem'} textAlign={'center'}>BotCollection </Text>
 
           <SimpleGrid
             as="div"
@@ -50,8 +50,9 @@ const BotCollection = ({ bots, loadingState, onAddBot }) => {
                   flexDirection={"column"}
                   justifyContent={"center"}
                   alignItems={"center"}
-                  bg={"gray"}
-                  border="3px solid blue"
+                  bg={"#111"}
+                  color={"white"}
+                  //   border="3px solid blue"
                   borderRadius={"12px"}
                 >
                   <CardBody cursor={"pointer"}>
@@ -64,19 +65,17 @@ const BotCollection = ({ bots, loadingState, onAddBot }) => {
                     </Flex>
                     <Stack justifyContent={"center"} alignItems={"center"}>
                       <Heading size="md">{bot.name}</Heading>
-                      <Text>{bot.bot_class}</Text>
-                      <Text color="blue.600" fontSize="2xl">
-                        {bot.created_at}
-                      </Text>
+                      <Text fontSize={"1.8rem"}>{bot.bot_class}</Text>
                       <Flex gap={"3"}>
                         <span>
-                          <FaHeartbeat fontSize={"1.2rem"} /> {bot.health}
+                          <FaHeartbeat fontSize={"1.5rem"} /> {bot.health}
                         </span>
                         <span>
-                          <BsFillLightningFill /> {bot.damage}
+                          <BsFillLightningFill fontSize={"1.5rem"} />{" "}
+                          {bot.damage}
                         </span>
                         <span>
-                          <BsShieldShaded /> {bot.armor}
+                          <BsShieldShaded fontSize={"1.5rem"} /> {bot.armor}
                         </span>
                       </Flex>
                       <ButtonGroup spacing="4">
