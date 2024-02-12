@@ -1,8 +1,10 @@
 
 Bot Army Manager
+
 This is a simple web application built using React.js for functionality and Chakra UI for styling. The application allows users to manage a collection of bots, including adding bots to their army, releasing bots from their army, and permanently discharging bots.
 
 Features
+
 Bot Collection: View profiles of all bots rendered in the BotCollection component.
 Add to Army: Add an individual bot to your army by clicking on it. The selected bot will render in the YourBotArmy component. Each bot can only be enlisted once.
 Release from Army: Release a bot from your army by clicking on it. The bot will disappear from the YourBotArmy component.
